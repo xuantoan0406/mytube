@@ -24,9 +24,10 @@ class registerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email|unique::User,email',
-            'password' => 'required'
+            'name' => 'required|',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'CfPassword' => 'required|same:password'
         ];
     }
     public function messages()
@@ -37,6 +38,8 @@ class registerRequest extends FormRequest
             'email.unique' => 'mail đã tồn tại',
             'email.email' => 'k phải email',
             'password.required' => 'nhập mk giùm cái',
+            'CfPassword.same' => "mk k trùng r",
+            'CfPassword.required' => 'xác thực mk đi'
         ];
     }
 }

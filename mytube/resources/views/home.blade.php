@@ -9,12 +9,22 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    You are logged in!
+                    <div>
+                        <h1>Upload</h1>
+                        <form action='upload' method='post' enctype='multipart/form-data'>
+                            @csrf
+                            <input type='text' name='name' value="{{Auth::user()->name}}"><br>
+                            <input type='file' name="file">
+                            <input type=submit value="add">
+
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>

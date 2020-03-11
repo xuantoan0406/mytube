@@ -33,16 +33,16 @@ class AuthController extends Controller
     }
     public function postRegister(registerRequest $request)
     {
-        $thanhvien = new mytube();
+        $thanhvien = new User();
         $thanhvien->name = $request->name;
         $thanhvien->email = $request->email;
         $thanhvien->password = $request->password;
         $thanhvien->remember_token = $request->_token;
-        if ($thanhvien->password == $request->CfPassword) {
-            $thanhvien->password = Hash::make($request->password);
-            $thanhvien->save();
+        $thanhvien->password = Hash::make($request->password);
+        $thanhvien->save();
+        if ($thanhvien)
             echo "đăng nhập thành công roài =======> " . "<a href='logins'> đăng nhập </a>";
-        } else {
+        else {
             echo "mk khác nhau kìa b êy";
         }
     }

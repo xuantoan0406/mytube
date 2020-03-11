@@ -9,7 +9,6 @@
 
                 <div class="card-body">
                     <form method="post" action="registers">
-                        @csrf
                         <div>
                             @if(count($errors) > 0)
                             <strong>lỗi roài</strong>
@@ -20,6 +19,7 @@
                             </ul>
                             @endif
                         </div>
+                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
