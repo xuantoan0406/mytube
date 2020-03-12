@@ -19,7 +19,7 @@
                         <form action='upload' method='post' enctype='multipart/form-data'>
                             @csrf
                             <input type='text' name='name' value="{{Auth::user()->name}}"><br>
-                            <input type='file' name="file">
+                            <input type='file' name="video">
                             <input type=submit value="add">
 
                         </form>

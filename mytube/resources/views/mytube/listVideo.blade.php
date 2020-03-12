@@ -10,11 +10,15 @@
 <body>
     <div>
         @foreach($list as $keys=>$item)
-        <tr>
-            <video width="320px" height="240px">
-                <source src="{{ asset('images/{!!$item->nameVideo!!}') }}" type="video/mp4">
-            </video>
-        </tr>
+        <table>
+            <tr>
+                <td>
+                    <video width="320px" height="240px" controls="controls">
+                        <source src="videos/{!!$item->nameVideo!!}" type="video/mp4">
+                    </video>
+                </td>
+            </tr>
+        </table>
         @endforeach
     </div>
 </body>

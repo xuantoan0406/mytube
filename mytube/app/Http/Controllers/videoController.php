@@ -9,21 +9,21 @@ class videoController extends Controller
 {
     public function upload(Request $rq)
     {
-        $video = $rq->file->getClientOriginalName();
-        $rq->file->move(public_path('videos'), $video);
+        $videos = $rq->file('video')->getClientOriginalName();
+        $rq->video->move(public_path('videos'), $videos);
         $dbVideo = DB::table('Videos')->insert([
             'nameUser' => $rq->name,
-            'nameVideo' => $rq->file
+            'nameVideo' => $videos
         ]);
         if ($dbVideo)
-            return 'ok';
+            return redirect('listVideo');
 
         else
             return 'lỗi rồi';
     }
     public function listVideo()
     {
-        $list = DB::table('Videos');
+        $list = DB::table('Videos')->get();
         return view('mytube/listVideo', ['list' => $list]);
     }
 }
