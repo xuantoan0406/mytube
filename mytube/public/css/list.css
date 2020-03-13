@@ -1,0 +1,28 @@
+#wrapper{
+    margin: auto;
+}
+#seach{
+    width: 400px;
+    height: 30px;
+    margin: auto;
+    background-color: aqua;
+}
+#tivi{
+    width: 45%;
+    height: 400px;
+    margin: 20px;
+    background-color: burlywood;
+    float: left;
+}
+#cmt{
+    width: 45%;
+    margin: 20px;
+    background-color: chartreuse;
+    
+}
+#list{
+    width : 40%;
+    margin: 20px;
+    background-color: cornflowerblue;
+    float: left;
+}

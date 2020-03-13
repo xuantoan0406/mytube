@@ -1,13 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+<div id="wrapper">
+    <div id="seach"> seach </div>
+    <div id="tivi"> tivi</div>
 
-                <div class="card-body">
+    <div id="list">
+        @if(Auth::check())
+        @foreach($list as $keys=>$item)
+        <table>
+            <tr>
+                <td>
+                    <video width="100px" height="50px" controls="controls">
+                        <source src="videos/{!!$item->nameVideo!!}" type="video/mp4">
+                    </video><br>
+                    {!!$item->nameVideo!!}
+                </td>
+            </tr>
+        </table>
+        @endforeach
+        @endif
+    </div>
+
+    <div id="cmt"> cmt</div>
+</div>
+
+<!-- <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
@@ -23,11 +41,5 @@
                             <input type=submit value="add">
 
                         </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    </div> -->
 @endsection
