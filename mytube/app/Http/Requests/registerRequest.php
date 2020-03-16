@@ -24,7 +24,7 @@ class registerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|',
+            'name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required',
             'CfPassword' => 'required|same:password'
@@ -34,6 +34,7 @@ class registerRequest extends FormRequest
     {
         return [
             'name.required' => 'nhap lại tên',
+            'name.unique' => 'tên có ng dùng r b êy',
             'email.required' => 'nhập lại mail đi',
             'email.unique' => 'mail đã tồn tại',
             'email.email' => 'k phải email',

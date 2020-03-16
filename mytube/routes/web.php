@@ -26,6 +26,8 @@ Route::post('registers', 'AuthController@postRegister');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/update', 'HomeController@index')->name('update');
 Route::post('upload', 'videoController@upload');
 Route::get('listVideo', 'videoController@listVideo');
+Route::post('search', 'videoController@search');
+Route::get('delete/{id}', 'videoController@delete');

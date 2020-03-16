@@ -23,7 +23,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         $kt = Auth::attempt($credentials);
         if ($kt)
-            return redirect('home');
+            return redirect('listVideo');
         else
             echo "that bai";
     }
@@ -48,7 +48,7 @@ class AuthController extends Controller
     }
     public function home()
     {
-        return view("home");
+        return view("update");
     }
     public function Index()
     {

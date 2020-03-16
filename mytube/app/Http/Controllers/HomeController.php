@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $list = DB::table('Videos')->get();
-        return view('home', ['list' => $list]);
+        $user = Auth::user()->name;
+        $list = DB::table('Videos')->where('nameUser', $user)->get();
+        return view('update', ['list' => $list]);
     }
 }

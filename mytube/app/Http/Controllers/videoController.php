@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class videoController extends Controller
 {
@@ -12,7 +13,7 @@ class videoController extends Controller
         $videos = $rq->file('video')->getClientOriginalName();
         $rq->video->move(public_path('videos'), $videos);
         $dbVideo = DB::table('Videos')->insert([
-            'nameUser' => $rq->name,
+            'nameUser' => Auth::user()->name,
             'nameVideo' => $videos
         ]);
         if ($dbVideo)
@@ -25,5 +26,16 @@ class videoController extends Controller
     {
         $list = DB::table('Videos')->get();
         return view('mytube/listVideo', ['list' => $list]);
+    }
+    public function search(request $rq)
+    {
+        $list = DB::table('Videos')->where('nameUser', 'like', '%' . $rq->search . '%')
+            ->orWhere('nameVideo', 'like', '%' . $rq->search . '%')->get();
+        return view("mytube/listVideo", ['list' => $list]);
+    }
+    public function delete($id)
+    {
+        $list = DB::table('Videos')->where('id', $id)->delete();
+        return redirect('update');
     }
 }
