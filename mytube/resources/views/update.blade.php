@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <center>
-        <h1>list video</h1>
+        <h1>My Video</h1>
     </center>
 </div>
 <div id="wrapper" style="text-align:center">
@@ -36,6 +36,16 @@
             <input type=submit value="add">
 
         </form>
+    </div>
+    <div>
+        @if(count($errors) > 0)
+        <strong>lỗi roài</strong>
+        <ul>
+            @foreach($errors ->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
     </div>
 
     @endif

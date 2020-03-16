@@ -54,18 +54,21 @@
                 </form>
             </center>
         </div>
-        <div id="tivi">
-            <video width="100%" height="400px" controls="controls">
-                <source src="videos/y2mate.com - Đồng hồ đếm ngược dành cho ai làm video 10s_akeytNVcIy4_360p.mp4" type="video/mp4">
-            </video>
+        <div id="content">
+            <div id="tivi">
+                <video width="100%" height="400px" controls="controls">
+                    <source src="videos/y2mate.com - Đồng hồ đếm ngược dành cho ai làm video 10s_akeytNVcIy4_360p.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="space"></div>
+            <div id="cmt"> cmt</div>
         </div>
-
         <div id="list">
             @foreach($list as $keys=>$item)
             <table>
                 <tr>
                     <td>
-                        <video width="100px" height="50px" controls="controls">
+                        <video width="150px" height="70px" controls="controls">
                             <source src="videos/{!!$item->nameVideo!!}" type="video/mp4">
                         </video><br>
                         {!!$item->nameVideo!!}
@@ -75,7 +78,7 @@
             @endforeach
         </div>
 
-        <div id="cmt"> cmt</div>
+
     </div>
 </body>
 

@@ -13,26 +13,35 @@
     margin: 10px;
     float: center;
 }
-#tivi{
-    width: 45%;
-    height: 400px;
+#content{
+    width: 50%;
     margin: 20px;
+    float: left;
+}
+#tivi{
+    width: 100%;
+    height: 400px;
     background-color: burlywood;
     float: left;
 }
+#space{
+    width: 100%;
+    height: 20px;
+    float: left;
+}
+#cmt{
+    width: 100%;
+    height: 200px;
+    background-color: chartreuse;
+    float: left;
+    
+}
+
 #list{
     width : 40%;
     margin: 20px;
     background-color: cornflowerblue;
     float: left;
-}
-#cmt{
-    width: 45%;
-    height: 300px;
-    margin: 20px;
-    background-color: chartreuse;
-    float: left;
-    
 }
 
     

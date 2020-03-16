@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class videoController extends Controller
 {
-    public function upload(Request $rq)
+    public function upload(upload $rq)
     {
         $videos = $rq->file('video')->getClientOriginalName();
         $rq->video->move(public_path('videos'), $videos);
