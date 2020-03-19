@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Scout\Searchable;
+use App;
 
 class HomeController extends Controller
 {
@@ -28,5 +30,8 @@ class HomeController extends Controller
         $user = Auth::user()->name;
         $list = DB::table('Videos')->where('nameUser', $user)->get();
         return view('update', ['list' => $list]);
+        // $orders = App\Models\SvModel::search('húc')->get();
+
+        // dd($orders);
     }
 }

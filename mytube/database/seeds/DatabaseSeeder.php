@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        DB::table('users')->insert([
-            'name' => 'hihi',
-            'password' => Hash::make('123'),
-            'email' => 'hii@gmail.com'
-        ]);
+        $this->call(SvSeeder::class);
+        // DB::table('users')->insert([
+        //     'name' => 'hihi',
+        //     'password' => Hash::make('123'),
+        //     'email' => 'hii@gmail.com'
+        // ]);
     }
 }

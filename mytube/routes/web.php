@@ -31,3 +31,6 @@ Route::post('upload', 'videoController@upload');
 Route::get('listVideo', 'videoController@listVideo');
 Route::post('search', 'videoController@search');
 Route::get('delete/{id}', 'videoController@delete');
+Route::get('jav', function () {
+    return view("learnJs");
+});
