@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App;
 use TeamTNT\TNTSearch\TNTSearch;
 use Laravel\Scout\Searchable;
+use Illuminate\Support\Facades\File;
 
 class videoController extends Controller
 {
@@ -37,14 +38,7 @@ class videoController extends Controller
     }
     public function search(request $rq)
     {
-        // $list = DB::table('Videos')->where('nameUser', 'like', '%' . $rq->search . '%')
-        //     ->orWhere('nameVideo', 'like', '%' . $rq->search . '%')->get();
-        // $list = App\ListVideo::search($keyword)->get()
-        //     ->map(function ($row) use ($keyword) {
-        //         $row->nameVideo = preg_replace('/(' . $keyword . ')/i', "<b>$0</b>", $row->nameVideo);
-        //         return $row;
-        //     });
-        // dd($list);
+
         $keyword = $rq->search;
         $list = App\ListVideo::search($keyword)->get();
         $tnt = new TNTSearch;
@@ -57,7 +51,10 @@ class videoController extends Controller
     }
     public function delete($id)
     {
-        $list = DB::table('Videos')->where('id', $id)->delete();
+        $video = DB::table('Videos')->where('id', $id)->get();
+        $nameVideo = $video[0]->nameVideo;
+        File::delete(public_path("videos/$nameVideo"));
+        DB::table('Videos')->where('id', $id)->delete();
         return redirect('update');
     }
 }

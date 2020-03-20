@@ -69,8 +69,10 @@
                 <tr>
                     <td>
                         <video width="150px" height="80px" controls="controls">
-                            <source src="videos/{!!strip_tags($item->nameVideo,'b')!!}" type="video/mp4">
+                            <source src="/videos/{!!strip_tags($item->nameVideo,'b')!!}" type="video/mp4">
                         </video><br>
+                    </td>
+                    <td>
                         {!!$item->nameVideo!!}
                     </td>
                 </tr>
