@@ -26,7 +26,7 @@ Route::post('registers', 'AuthController@postRegister');
 
 Auth::routes();
 
-Route::get('/update', 'HomeController@index')->name('update');
+Route::get('update', 'HomeController@index')->name('update');
 Route::post('upload', 'videoController@upload');
 Route::get('listVideo', 'videoController@listVideo');
 Route::post('search', 'videoController@search');
@@ -34,3 +34,5 @@ Route::get('delete/{id}', 'videoController@delete');
 Route::get('jav', function () {
     return view("learnJs");
 });
+Route::resource('video', 'VueVideoController');
+Route::post('video', 'VueVideoController@store')->name('video');

@@ -47,17 +47,19 @@
         </div>
         <div id="search">
             <center>
-                <form action="search" method="post">
-                    @csrf
-                    <input type="text" name="search">
-                    <input type="submit" value="search">
-                </form>
+                <div class="user-dashboard">
+                    <form method="post" action="search">
+                        @csrf
+                        <input placeholder="Search" name="search" />
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
             </center>
         </div>
         <div id="content">
             <div id="tivi">
-                <video width="100%" height="400px" controls="controls">
-                    <source src="videos/y2mate.com - Đồng hồ đếm ngược dành cho ai làm video 10s_akeytNVcIy4_360p.mp4" type="video/mp4">
+                <video width="100%" height="100%" controls="controls">
+                    <source src="videos/q.mp4" type="video/mp4">
                 </video>
             </div>
             <div id="space"></div>

@@ -1,0 +1,47 @@
+#wrapper{
+    height: 70px;
+    margin: 0;
+    box-shadow: 1px 9px 32px 2px rgba(227,214,227,1);
+}
+#home{
+    width: 10%;
+    height: 54px;
+    float: left;
+    margin: 11px;
+    cursor: pointer;
+}
+#img{
+    width: 100%;
+    height: 100%;
+}
+#avt{
+    width: 52px;
+    height: 35px;
+}
+#Search{
+    width: 70%;
+    height: 30px;
+    float: left;
+    margin: 20px;
+}
+#form{
+    width: 60%;
+    padding-left:260px;
+
+}
+#user{
+
+    float: left;
+    margin: 20px;
+    padding-left:50px
+
+}
+
+.listvideo{
+    margin: 10px;
+    height: 125px;
+    width:250px;
+    float: left;
+    padding-left: 20px;
+    padding: 20px;
+}

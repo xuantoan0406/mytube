@@ -1,28 +1,21 @@
-<html>
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 
 <head>
-    <title>Form Validation</title>
-    <script type="text/javascript">
-        function hello() {
-            var Ten, Tuoi; // Khai báo 2 biến để lưu tên và tuổi
-            Ten = prompt("Bạn hãy nhập vào tên ", "");
-            Tuoi = prompt("Bạn hãy nhập vào Tuổi : ", 20);
-            document.write("Chào bạn : <B> " + Ten + "</B>");
-            document.write("<BR>"); // Xuống dòng
-            document.write("Tuổi của bạn là : <U> " + Tuoi + "</U>");
-        }
-    </script>
+    <title>Laravel</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 
 <body>
-    <button type="button" onclick="hello()">hihih</button>
-    <p id="test"></p>
-    <script>
-        document.write("xin chào");
-        document.getElementById("test").innerHTML = "hellooooo";
-    </script>
+    <div id="app">
+        <user-dashboard></user-dashboard>
+
+    </div>
 
 
+    <script src="{{asset('/js/app.js')}}"></script>
 </body>
 
 </html>
