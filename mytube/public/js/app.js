@@ -3610,7 +3610,7 @@ __webpack_require__.r(__webpack_exports__);
       axios["delete"]("/video/" + video.id).then(function (response) {
         console.log(response.data.result);
 
-        _this2.list_videos.splice(index, 1);
+        _this2.list_videos.splice(index + video.id, 1);
       });
     },
     videoss: function videoss() {
@@ -3689,10 +3689,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      search: "",
       list_videos: []
     };
   },
@@ -3705,6 +3705,15 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/video").then(function (response) {
         _this.list_videos = response.data;
+      });
+    },
+    searchData: function searchData() {
+      var _this2 = this;
+
+      axios.post("/search", {
+        search: this.search
+      }).then(function (response) {
+        _this2.list_videos = response.data.kqSearch;
       });
     }
   }
@@ -100043,7 +100052,43 @@ var render = function() {
     _c("div", { attrs: { id: "wrapper" } }, [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { attrs: { id: "Search" } }, [
+        _c("div", { attrs: { id: "form" } }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.search,
+                expression: "search"
+              }
+            ],
+            staticClass: "form-control mr-sm-2",
+            attrs: { placeholder: "Search" },
+            domProps: { value: _vm.search },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.search = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.searchData()
+                }
+              }
+            },
+            [_vm._v("Search")]
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -100094,9 +100139,24 @@ var render = function() {
       { staticClass: "list-products" },
       _vm._l(_vm.list_videos, function(prod) {
         return _c("div", { key: prod.id, staticClass: "listvideo" }, [
-          _vm._m(2, true),
+          _c("div", [
+            _c(
+              "video",
+              {
+                attrs: { width: "160px", height: "85px", controls: "controls" }
+              },
+              [
+                _c("source", {
+                  attrs: {
+                    src: "/videos/" + prod.nameVideo.replace(/<[^>]*>?/gm, ""),
+                    type: "video/mp4"
+                  }
+                })
+              ]
+            )
+          ]),
           _vm._v(" "),
-          _c("div", [_vm._v(_vm._s(prod.nameVideo))])
+          _c("div", { domProps: { innerHTML: _vm._s("" + prod.nameVideo) } })
         ])
       }),
       0
@@ -100110,46 +100170,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "home" } }, [
       _c("img", { attrs: { id: "img", src: "/imgs/m.png", alt: "ảnh" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "Search" } }, [
-      _c("div", { attrs: { id: "form" } }, [
-        _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-          _c("input", {
-            staticClass: "form-control mr-sm-2",
-            attrs: { type: "search", placeholder: "Search", name: "search" }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-success my-2 my-sm-0",
-              attrs: { type: "submit" }
-            },
-            [_vm._v("Search")]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "video",
-        { attrs: { width: "160px", height: "85px", controls: "controls" } },
-        [
-          _c("source", {
-            attrs: { src: "'/videos/'+prod.nameVideo", type: "video/mp4" }
-          })
-        ]
-      )
     ])
   }
 ]

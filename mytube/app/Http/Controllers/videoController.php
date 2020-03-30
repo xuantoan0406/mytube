@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\upload;
 use Illuminate\Http\Request;
-use App\ListVideo;
+use App\Models\Video;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App;
@@ -23,13 +23,13 @@ class videoController extends Controller
             'nameVideo' => $videos
         ]);
 
-        $addSearchIndex = ListVideo::where('nameVideo', $videos)->get();
+        $addSearchIndex = Video::where('nameVideo', $videos)->get();
         $addSearchIndex->searchable();
         if ($dbVideo)
             return redirect('listVideo');
 
         else
-            return 'lỗi rồi';
+            return view('update');
     }
     public function listVideo()
     {
@@ -40,7 +40,7 @@ class videoController extends Controller
     {
 
         $keyword = $rq->search;
-        $list = App\ListVideo::search($keyword)->get();
+        $list = Video::search($keyword)->get();
         $tnt = new TNTSearch;
         $list = $list->map(function ($article) use ($keyword, $tnt) {
             $article->nameVideo = $tnt->highlight($article->nameVideo, $keyword, 'b');

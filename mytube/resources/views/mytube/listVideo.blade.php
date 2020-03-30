@@ -48,7 +48,7 @@
         <div id="search">
             <center>
                 <div class="user-dashboard">
-                    <form method="post" action="search">
+                    <form method="post" action="searchs">
                         @csrf
                         <input placeholder="Search" name="search" />
                         <button type="submit">Search</button>

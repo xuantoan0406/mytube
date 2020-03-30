@@ -7,10 +7,8 @@
 
       <div id="Search">
         <div id="form">
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <input class="form-control mr-sm-2" v-model="search" placeholder="Search" />
+          <button @click="searchData()">Search</button>
         </div>
       </div>
 
@@ -30,10 +28,11 @@
       <div class="listvideo" v-for="prod in list_videos" :key="prod.id">
         <div>
           <video width="160px" height="85px" controls="controls">
-            <source src="'/videos/'+prod.nameVideo" type="video/mp4" />
+            <source :src="`/videos/${prod.nameVideo.replace(/<[^>]*>?/gm, '')}`" type="video/mp4" />
+            <!-- {!!strip_tags($item->nameVideo,'b')!!} -->
           </video>
         </div>
-        <div>{{ prod.nameVideo }}</div>
+        <div v-html="`${prod.nameVideo}`"></div>
       </div>
     </div>
   </div>
@@ -44,6 +43,7 @@
 export default {
   data() {
     return {
+      search: "",
       list_videos: []
     };
   },
@@ -51,10 +51,17 @@ export default {
   created() {
     this.getListVideo();
   },
+
   methods: {
     getListVideo() {
       axios.get("/video").then(response => {
         this.list_videos = response.data;
+      });
+    },
+
+    searchData() {
+      axios.post("/search", { search: this.search }).then(response => {
+        this.list_videos = response.data.kqSearch;
       });
     }
   }

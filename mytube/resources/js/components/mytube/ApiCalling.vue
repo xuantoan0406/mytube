@@ -70,7 +70,7 @@ export default {
     deleteProduct(video, index) {
       axios.delete("/video/" + video.id).then(response => {
         console.log(response.data.result);
-        this.list_videos.splice(index, 1);
+        this.list_videos.splice(index + video.id, 1);
       });
     },
     videoss() {

@@ -29,10 +29,10 @@ Auth::routes();
 Route::get('update', 'HomeController@index')->name('update');
 Route::post('upload', 'videoController@upload');
 Route::get('listVideo', 'videoController@listVideo');
-Route::post('search', 'videoController@search');
+Route::post('searchs', 'videoController@search');
 Route::get('delete/{id}', 'videoController@delete');
-Route::get('jav', function () {
-    return view("learnJs");
-});
+
+Route::get('search', 'VueVideoController@kqSearch');
 Route::resource('video', 'VueVideoController');
 Route::post('video', 'VueVideoController@store')->name('video');
+Route::post('search', 'VueVideoController@search');
