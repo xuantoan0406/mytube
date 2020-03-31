@@ -79,7 +79,7 @@ class VueVideoController extends Controller
             'nameUser' => $nameUser,
             'nameVideo' => $nameVideo
         ]);
-        $addSearchIndex = Video::find($nameVideo)->get();
+        $addSearchIndex = $dbVideo;
         $addSearchIndex->searchable();
         return response([
             'videoxxx' => $dbVideo

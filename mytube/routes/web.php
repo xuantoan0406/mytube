@@ -30,7 +30,7 @@ Route::post('searchs', 'videoController@search');
 Route::get('delete/{id}', 'videoController@delete');
 
 Route::resource('video', 'VueVideoController');
-Route::post('video', 'VueVideoController@store')->name('video');
+Route::post('video', 'VueVideoController@store');
 Route::post('search', 'VueVideoController@search');
 
 Route::post('showVideo', 'VueVideoController@showVideo');
