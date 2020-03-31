@@ -11,7 +11,7 @@
 
     @if(Auth::check())
     <div id="app">
-        <api-calling></api-calling>
+        <upload-video></upload-video>
     </div>
     @else
     <a class="nav-link" href="{{ route('logins') }}">{{ __('Login') }}</a>

@@ -15,12 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'VueVideoController@home');
 Route::get('logins', 'AuthController@getLogin')->name('logins');
 Route::post('logins', 'AuthController@postLogin');
-
 Route::get('registers', 'AuthController@getRegister')->name('registers');
 Route::post('registers', 'AuthController@postRegister');
 
@@ -32,7 +29,8 @@ Route::get('listVideo', 'videoController@listVideo');
 Route::post('searchs', 'videoController@search');
 Route::get('delete/{id}', 'videoController@delete');
 
-Route::get('search', 'VueVideoController@kqSearch');
 Route::resource('video', 'VueVideoController');
 Route::post('video', 'VueVideoController@store')->name('video');
 Route::post('search', 'VueVideoController@search');
+
+Route::post('showVideo', 'VueVideoController@showVideo');

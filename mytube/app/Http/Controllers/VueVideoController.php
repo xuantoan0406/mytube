@@ -18,9 +18,24 @@ class VueVideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        return Video::get();
+        return view('vueMytube/home');
+    }
+    public function showVideo()
+    {
+        $check = Auth::check();
+        if ($check)
+            $name_user = Auth::user()->name;
+        else
+            $name_user = [];
+
+        $ls = Video::get();
+        return response([
+            'videoss' => $ls,
+            'nameUser' => $name_user
+
+        ]);
     }
     public function kqSearch()
     {
@@ -64,8 +79,8 @@ class VueVideoController extends Controller
             'nameUser' => $nameUser,
             'nameVideo' => $nameVideo
         ]);
-        // $addSearchIndex = ListVideo::find($nameVideo)->get();
-        // $addSearchIndex->searchable();
+        $addSearchIndex = Video::find($nameVideo)->get();
+        $addSearchIndex->searchable();
         return response([
             'videoxxx' => $dbVideo
         ]);

@@ -23,7 +23,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         $kt = Auth::attempt($credentials);
         if ($kt)
-            return redirect('listVideo');
+            return redirect('/');
         else
             echo "that bai";
     }

@@ -25,10 +25,17 @@
     margin: 20px;
 }
 #form{
-    width: 60%;
-    padding-left:260px;
+    width: 65%;
+    padding-left:250px;
 
 }
+.button-search{
+    float:right;
+}
+.search-bar{
+    float:left
+}
+
 #user{
 
     float: left;

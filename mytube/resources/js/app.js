@@ -27,8 +27,8 @@ Vue.use(ElementUI);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 
-Vue.component('user-dashboard', require('./components/mytube/UserDashboard.vue').default);
-Vue.component('api-calling', require('./components/mytube/ApiCalling.vue').default);
+Vue.component('home', require('./components/mytube/Home.vue').default);
+Vue.component('upload-video', require('./components/mytube/UploadVideo.vue').default);
 
 
 /**
@@ -36,7 +36,18 @@ Vue.component('api-calling', require('./components/mytube/ApiCalling.vue').defau
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+const router = new VueRouter({
+    mode: 'history',
+    router
+})
 
 const app = new Vue({
     el: '#app',
+    router,
+
 });
+
